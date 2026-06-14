@@ -159,7 +159,59 @@
       }
 
       .hero {
+        position: relative;
+        overflow: hidden;
         padding: clamp(28px, 5vw, 56px);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 890px;
+      }
+
+      .signal-map {
+        position: absolute;
+        top: 22px;
+        right: 18px;
+        width: min(280px, 34%);
+        opacity: 0.72;
+        pointer-events: none;
+      }
+
+      .signal-line {
+        stroke-dasharray: 7 9;
+        animation: signalFlow 3.4s linear infinite;
+      }
+
+      .signal-node {
+        animation: signalPulse 3.2s ease-in-out infinite;
+        filter: drop-shadow(0 0 6px rgba(16, 169, 143, 0.62));
+      }
+
+      .signal-node:nth-of-type(2) {
+        animation-delay: 0.45s;
+      }
+
+      .signal-node:nth-of-type(3) {
+        animation-delay: 0.9s;
+      }
+
+      @keyframes signalFlow {
+        to {
+          stroke-dashoffset: -140;
+        }
+      }
+
+      @keyframes signalPulse {
+        0%,
+        100% {
+          opacity: 0.52;
+        }
+
+        50% {
+          opacity: 1;
+        }
       }
 
       .eyebrow {
@@ -199,6 +251,15 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
+      }
+
+      .hero-note {
+        margin: 20px 0 0;
+        border-left: 3px solid var(--brand);
+        padding-left: 14px;
+        color: #465555;
+        font-size: 15px;
+        line-height: 1.55;
       }
 
       .summary-grid {
@@ -369,6 +430,35 @@
       .text {
         color: var(--muted);
         line-height: 1.75;
+      }
+
+      .compact-compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        overflow: hidden;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--line);
+      }
+
+      .compare-box {
+        padding: 16px;
+        background: #fff;
+      }
+
+      .compare-box.dark {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .compare-box p {
+        margin: 0;
+        color: inherit;
+        font-size: 14px;
+        line-height: 1.55;
+        opacity: 0.78;
       }
 
       .list {
@@ -572,6 +662,14 @@
           padding: 22px;
         }
 
+        .signal-map {
+          display: none;
+        }
+
+        .compact-compare {
+          grid-template-columns: 1fr;
+        }
+
         .qr {
           max-width: 260px;
           margin: 0 auto;
@@ -584,6 +682,17 @@
 
         .topbar .button {
           display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .signal-line,
+        .signal-node {
+          animation: none;
         }
       }
     </style>
@@ -607,15 +716,30 @@
       <div class="layout">
         <div>
           <section class="panel hero" aria-labelledby="titulo">
-            <p class="eyebrow">Propuesta para administraciones y centros educativos</p>
-            <h1 id="titulo">IA útil para recuperar tiempo educativo.</h1>
-            <p class="subhead">
-              Desde Melilla, Laboratorio Logoped-IA ayuda a reducir burocracia, ordenar procesos
-              e implantar tecnología con criterio pedagógico, clínico y organizativo.
-            </p>
-            <div class="hero-actions">
-              <a class="button brand-action" href="#propuesta">Leer propuesta</a>
-              <a class="button secondary" href="#video-manifiesto">Ver vídeo manifiesto</a>
+            <svg class="signal-map" viewBox="0 0 300 220" fill="none" aria-hidden="true">
+              <path class="signal-line" d="M34 52 L122 36 L224 70 L266 150 L174 184 L82 138 Z" stroke="#10a98f" stroke-width="1.4" opacity=".42" />
+              <path class="signal-line" d="M122 36 L174 184 M82 138 L224 70 M34 52 L174 184" stroke="#45d9ce" stroke-width="1.2" opacity=".28" />
+              <circle class="signal-node" cx="34" cy="52" r="5" fill="#10a98f" />
+              <circle class="signal-node" cx="122" cy="36" r="6" fill="#45d9ce" />
+              <circle class="signal-node" cx="224" cy="70" r="5" fill="#10a98f" />
+              <circle class="signal-node" cx="266" cy="150" r="5" fill="#45d9ce" />
+              <circle class="signal-node" cx="174" cy="184" r="6" fill="#10a98f" />
+              <circle class="signal-node" cx="82" cy="138" r="5" fill="#45d9ce" />
+            </svg>
+            <div class="hero-content">
+              <p class="eyebrow">Desde Melilla · Educación pública</p>
+              <h1 id="titulo">No es una herramienta. Es infraestructura para recuperar tiempo educativo.</h1>
+              <p class="subhead">
+                Laboratorio Logoped-IA ayuda a reducir burocracia, ordenar procesos e implantar
+                tecnología con criterio pedagógico, clínico y organizativo.
+              </p>
+              <div class="hero-actions">
+                <a class="button brand-action" href="#propuesta">Leer propuesta</a>
+                <a class="button secondary" href="#video-manifiesto">Ver vídeo manifiesto</a>
+              </div>
+              <p class="hero-note">
+                La tecnología no debe añadir otra carga. Debe quitar peso.
+              </p>
             </div>
           </section>
 
@@ -652,6 +776,16 @@
                     es ayudar a decidir qué tecnología tiene sentido, cómo se implanta y
                     qué resultados debe producir.
                   </p>
+                  <div class="compact-compare" aria-label="Diferencia entre herramienta e infraestructura">
+                    <div class="compare-box">
+                      <span class="label">Una herramienta</span>
+                      <p>Resuelve una tarea concreta y suele quedar aislada si no se integra.</p>
+                    </div>
+                    <div class="compare-box dark">
+                      <span class="label">Una infraestructura</span>
+                      <p>Ordena procesos, forma equipos, mide impacto y deja capacidad instalada.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>
