@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Laboratorio Logoped-IA | Infraestructura para transformar la educación</title>
+    <title>Laboratorio Logoped-IA | IA útil para educación</title>
     <meta
       name="description"
-      content="Laboratorio Logoped-IA ayuda a administraciones públicas, centros educativos y equipos docentes a implantar tecnología útil con criterio pedagógico, clínico y estratégico."
+      content="Laboratorio Logoped-IA ayuda a administraciones públicas, centros educativos y equipos docentes a implantar IA útil, reducir burocracia y recuperar tiempo profesional."
     />
     <style>
       :root {
-        --ink: #080a0a;
-        --muted: #5f6868;
-        --soft: #f6f7f7;
-        --line: #e7eaea;
-        --brand: #13b89f;
-        --brand-dark: #0f7467;
+        --ink: #0a0d0d;
+        --text: #202828;
+        --muted: #596464;
+        --soft: #f5f7f7;
+        --line: #dfe5e5;
+        --line-strong: #c7d1d1;
+        --brand: #10a98f;
+        --brand-soft: #e9fbf7;
+        --warn: #f7f3e8;
         --white: #fff;
       }
 
@@ -30,149 +33,141 @@
 
       body {
         margin: 0;
-        color: var(--ink);
-        background: var(--white);
+        color: var(--text);
+        background:
+          linear-gradient(90deg, rgba(10, 13, 13, 0.035) 1px, transparent 1px) 0 0 / 80px 80px,
+          linear-gradient(180deg, #fff 0%, #f8fafa 100%);
         font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
+          ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: geometricPrecision;
       }
 
       a {
         color: inherit;
-        text-decoration: none;
       }
 
-      .nav {
-        position: fixed;
-        inset: 0 0 auto;
-        z-index: 20;
-        border-bottom: 1px solid rgba(8, 10, 10, 0.06);
-        background: rgba(255, 255, 255, 0.78);
-        backdrop-filter: blur(18px);
+      a:focus-visible,
+      button:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid rgba(16, 169, 143, 0.45);
+        outline-offset: 3px;
       }
 
-      .nav-inner {
-        width: min(1180px, calc(100% - 40px));
-        height: 68px;
+      .shell {
+        width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(16px);
+      }
+
+      .topbar-inner {
+        min-height: 64px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 20px;
+        gap: 18px;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        font-size: 13px;
-        font-weight: 720;
-        letter-spacing: 0.12em;
+        gap: 11px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-decoration: none;
         text-transform: uppercase;
       }
 
-      .brand-dot {
+      .brand::before {
+        content: "";
         width: 10px;
         height: 10px;
         border-radius: 999px;
         background: var(--brand);
-        box-shadow: 0 0 28px rgba(19, 184, 159, 0.7);
+        box-shadow: 0 0 24px rgba(16, 169, 143, 0.72);
       }
 
-      .nav-links {
+      .nav {
         display: flex;
         align-items: center;
-        gap: 28px;
-        color: #626b6b;
+        gap: 20px;
+        color: var(--muted);
         font-size: 14px;
       }
 
-      .nav-links a:hover {
+      .nav a {
+        text-decoration: none;
+      }
+
+      .nav a:hover {
         color: var(--ink);
       }
 
       .button {
         display: inline-flex;
+        min-height: 42px;
         align-items: center;
         justify-content: center;
-        min-height: 46px;
-        border-radius: 999px;
-        padding: 0 20px;
-        border: 1px solid transparent;
-        font-size: 14px;
-        font-weight: 700;
-        transition:
-          transform 180ms ease,
-          border-color 180ms ease,
-          background 180ms ease;
-      }
-
-      .button:hover {
-        transform: translateY(-1px);
-      }
-
-      .button-primary {
+        border-radius: 4px;
+        border: 1px solid var(--ink);
+        padding: 0 15px;
         background: var(--ink);
+        color: white;
+        font-size: 14px;
+        font-weight: 750;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        border-color: var(--line-strong);
+        background: white;
+        color: var(--ink);
+      }
+
+      .button.brand-action {
+        border-color: var(--brand);
+        background: var(--brand);
         color: white;
       }
 
-      .button-primary:hover {
-        background: var(--brand-dark);
+      main {
+        padding: 42px 0 60px;
       }
 
-      .button-secondary {
-        border-color: #d6dddd;
-        background: rgba(255, 255, 255, 0.74);
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 28px 80px -72px rgba(10, 13, 13, 0.65);
       }
 
       .hero {
-        position: relative;
-        min-height: 100vh;
-        padding: 132px 20px 70px;
-        overflow: hidden;
-        display: grid;
-        align-items: center;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.97) 35%, rgba(255, 255, 255, 0.68) 74%, #fff 100%),
-          url("assets/institutional-map.png") center / cover no-repeat;
-        z-index: -2;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: auto 0 0;
-        height: 190px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0), #fff 76%);
-        z-index: -1;
-      }
-
-      .container {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-      }
-
-      .hero-grid {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: center;
-        gap: 56px;
+        padding: clamp(28px, 5vw, 56px);
       }
 
       .eyebrow {
-        margin: 0;
-        color: var(--brand-dark);
+        margin: 0 0 18px;
+        color: #087a6a;
         font-size: 13px;
-        font-weight: 760;
-        letter-spacing: 0.18em;
+        font-weight: 800;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
       }
 
@@ -184,589 +179,520 @@
       }
 
       h1 {
-        max-width: 980px;
-        margin-bottom: 30px;
-        font-size: clamp(52px, 8.2vw, 116px);
+        max-width: 900px;
+        margin-bottom: 22px;
+        color: var(--ink);
+        font-size: clamp(40px, 6vw, 76px);
         line-height: 0.98;
-        letter-spacing: -0.055em;
-        font-weight: 760;
+        letter-spacing: -0.045em;
       }
 
-      .muted-title {
-        display: block;
-        color: #747b7b;
-      }
-
-      .hero-copy {
-        max-width: 700px;
-        margin-bottom: 36px;
-        color: #3d4646;
-        font-size: clamp(20px, 2.1vw, 27px);
+      .subhead {
+        max-width: 840px;
+        margin-bottom: 28px;
+        color: #314040;
+        font-size: clamp(19px, 2vw, 25px);
         line-height: 1.45;
       }
 
       .hero-actions {
         display: flex;
-        gap: 12px;
         flex-wrap: wrap;
+        gap: 10px;
       }
 
-      .orbit {
-        position: relative;
-        height: 560px;
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
       }
 
-      .ring {
-        position: absolute;
-        border: 1px solid rgba(19, 184, 159, 0.24);
+      .summary-item {
+        min-height: 132px;
+        padding: 22px;
+        border-right: 1px solid var(--line);
+      }
+
+      .summary-item:last-child {
+        border-right: 0;
+      }
+
+      .label {
+        display: block;
+        margin-bottom: 11px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .summary-item strong {
+        display: block;
+        color: var(--ink);
+        font-size: 18px;
+        line-height: 1.35;
+      }
+
+      .side {
+        position: sticky;
+        top: 82px;
+        display: grid;
+        gap: 18px;
+      }
+
+      .side-card {
+        padding: 20px;
+      }
+
+      .side-card h2 {
+        margin-bottom: 10px;
+        color: var(--ink);
+        font-size: 24px;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+      }
+
+      .side-card p {
+        margin-bottom: 16px;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .qr {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: #050805;
+      }
+
+      .qr img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
         border-radius: 999px;
+        padding: 6px 10px;
+        background: var(--brand-soft);
+        color: #067362;
+        font-size: 12px;
+        font-weight: 850;
       }
 
-      .ring.one {
-        width: 520px;
-        height: 520px;
-        right: 0;
-        top: 8px;
-      }
-
-      .ring.two {
-        width: 390px;
-        height: 390px;
-        right: 65px;
-        top: 74px;
-        border-color: rgba(8, 10, 10, 0.1);
-      }
-
-      .node {
-        position: absolute;
-        width: 12px;
-        height: 12px;
+      .status::before {
+        content: "";
+        width: 7px;
+        height: 7px;
         border-radius: 999px;
         background: var(--brand);
-        box-shadow: 0 0 35px rgba(19, 184, 159, 0.76);
       }
 
-      .node.a {
-        right: 292px;
-        top: 118px;
-      }
-
-      .node.b {
-        right: 108px;
-        top: 392px;
-        width: 9px;
-        height: 9px;
-        background: var(--ink);
-        box-shadow: none;
-      }
-
-      .line {
-        position: absolute;
-        right: 30px;
-        top: 282px;
-        width: 430px;
-        height: 1px;
-        transform: rotate(-26deg);
-        background: linear-gradient(90deg, transparent, rgba(19, 184, 159, 0.7), transparent);
-      }
-
-      section {
-        padding: 120px 0;
-      }
-
-      .section-soft {
-        border-block: 1px solid var(--line);
-        background: var(--soft);
-      }
-
-      .section-dark {
-        background: var(--ink);
-        color: white;
-      }
-
-      .section-head {
-        max-width: 820px;
-        margin: 0 auto 58px;
-        text-align: center;
-      }
-
-      h2 {
-        margin-bottom: 0;
-        font-size: clamp(38px, 5.2vw, 72px);
-        line-height: 1.05;
-        letter-spacing: -0.04em;
-        font-weight: 750;
-      }
-
-      .section-head p,
-      .lead {
-        color: var(--muted);
-        font-size: 20px;
-        line-height: 1.7;
-      }
-
-      .manifest {
+      .sections {
         display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
-        gap: 74px;
-        align-items: start;
+        gap: 18px;
+        margin-top: 18px;
       }
 
-      .manifest .large {
-        color: #6c7373;
-        font-size: clamp(27px, 3.1vw, 42px);
-        line-height: 1.22;
-        letter-spacing: -0.03em;
+      .section {
+        padding: 28px;
       }
 
-      .manifest .body {
-        color: #3d4646;
-        font-size: 19px;
-        line-height: 1.85;
+      .section h2 {
+        margin-bottom: 18px;
+        color: var(--ink);
+        font-size: clamp(27px, 3vw, 40px);
+        line-height: 1.08;
+        letter-spacing: -0.035em;
       }
 
-      .cards {
+      .two-col {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 22px;
+      }
+
+      .lead {
+        color: #334242;
+        font-size: 20px;
+        line-height: 1.55;
+      }
+
+      .text {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .list li {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 10px;
+        color: #344343;
+        line-height: 1.55;
+      }
+
+      .list li::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        margin-top: 9px;
+        border-radius: 999px;
+        background: var(--brand);
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--line);
+      }
+
+      .cell {
+        min-height: 145px;
+        padding: 18px;
+        background: white;
+      }
+
+      .cell h3 {
+        margin-bottom: 8px;
+        color: var(--ink);
+        font-size: 18px;
+      }
+
+      .cell p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .method {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1px;
         overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
+        border-radius: 6px;
         background: var(--line);
-      }
-
-      .card {
-        min-height: 246px;
-        padding: 30px;
-        background: white;
-        transition: background 180ms ease;
-      }
-
-      .card:hover {
-        background: #effdf9;
-      }
-
-      .mark {
-        width: 46px;
-        height: 1px;
-        margin-bottom: 34px;
-        background: var(--brand);
-      }
-
-      .card h3 {
-        margin-bottom: 16px;
-        font-size: 21px;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
         counter-reset: step;
       }
 
       .step {
-        position: relative;
-        padding: 26px;
-        min-height: 170px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: white;
-        box-shadow: 0 24px 70px -62px rgba(8, 10, 10, 0.55);
+        min-height: 122px;
+        padding: 17px;
+        background: #fff;
       }
 
       .step::before {
         counter-increment: step;
-        content: "0" counter(step);
+        content: counter(step, decimal-leading-zero);
         display: block;
-        margin-bottom: 35px;
-        color: var(--brand-dark);
-        font-size: 13px;
+        margin-bottom: 18px;
+        color: #087a6a;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .step strong {
+        color: var(--ink);
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+      }
+
+      details:first-of-type {
+        border-top: 0;
+      }
+
+      summary {
+        cursor: pointer;
+        padding: 18px 0;
+        color: var(--ink);
         font-weight: 800;
       }
 
-      .step h3 {
-        margin: 0;
+      details p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .quote {
+        border-left: 4px solid var(--brand);
+        padding-left: 18px;
+        color: var(--ink);
         font-size: 24px;
+        line-height: 1.35;
+        letter-spacing: -0.02em;
       }
 
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 11px;
-      }
-
-      .chip {
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        border-radius: 999px;
-        padding: 10px 15px;
-        color: rgba(255, 255, 255, 0.78);
-        background: rgba(255, 255, 255, 0.04);
-        font-size: 14px;
-      }
-
-      .split {
-        display: grid;
-        grid-template-columns: 0.82fr 1.18fr;
-        gap: 72px;
-        align-items: center;
-      }
-
-      .profile-card,
-      .dark-callout {
-        border-radius: 8px;
-        padding: 42px;
-        border: 1px solid var(--line);
-        background: white;
-        box-shadow: 0 28px 90px -74px rgba(8, 10, 10, 0.65);
-      }
-
-      .profile-card h2 {
+      .footer {
         margin-top: 18px;
-      }
-
-      .credentials {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 13px;
-        margin-top: 34px;
-        color: #4c5555;
+        padding: 22px 0 0;
+        color: var(--muted);
         font-size: 14px;
-        font-weight: 700;
-      }
-
-      .no-humo {
-        width: min(1020px, calc(100% - 40px));
-        margin: 0 auto;
-        border-radius: 8px;
-        padding: 68px;
-        background: var(--ink);
-        color: white;
-      }
-
-      .no-humo-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 58px;
-      }
-
-      .no-humo p {
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 22px;
-        line-height: 1.6;
-      }
-
-      .final {
-        text-align: center;
-        border-top: 1px solid var(--line);
-      }
-
-      .final h2 {
-        max-width: 860px;
-        margin: 0 auto 34px;
-        font-size: clamp(54px, 7.4vw, 96px);
-      }
-
-      footer {
-        border-top: 1px solid var(--line);
-        padding: 34px 0;
       }
 
       .footer-inner {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        gap: 20px;
+        gap: 16px;
+        border-top: 1px solid var(--line);
+        padding-top: 22px;
       }
 
-      .telegram {
-        border: 1px solid rgba(19, 184, 159, 0.35);
-        border-radius: 999px;
-        padding: 12px 18px;
-        color: #0f7467;
-        background: #effdf9;
-        font-weight: 760;
-      }
-
-      @media (max-width: 980px) {
-        .nav-links,
-        .orbit {
-          display: none;
-        }
-
-        .hero-grid,
-        .manifest,
-        .split,
-        .no-humo-grid {
+      @media (max-width: 940px) {
+        .layout,
+        .two-col {
           grid-template-columns: 1fr;
         }
 
-        .cards,
-        .timeline {
+        .side {
+          position: static;
           grid-template-columns: 1fr 1fr;
         }
       }
 
-      @media (max-width: 640px) {
-        .nav-inner,
-        .container,
-        .no-humo {
-          width: min(100% - 28px, 1180px);
+      @media (max-width: 720px) {
+        .nav {
+          display: none;
         }
 
-        .nav-inner {
-          height: 62px;
+        main {
+          padding-top: 18px;
         }
 
-        .brand {
-          max-width: 178px;
-          font-size: 11px;
-          line-height: 1.25;
-        }
-
-        .nav .button {
-          min-height: 40px;
-          padding: 0 13px;
-          font-size: 12px;
-        }
-
-        .hero {
-          min-height: auto;
-          padding-top: 116px;
-        }
-
-        h1 {
-          font-size: 52px;
-        }
-
-        section {
-          padding: 82px 0;
-        }
-
-        .cards,
-        .timeline,
-        .credentials {
+        .summary-grid,
+        .matrix,
+        .side {
           grid-template-columns: 1fr;
         }
 
-        .profile-card,
-        .no-humo {
-          padding: 30px;
+        .method {
+          grid-template-columns: repeat(2, 1fr);
         }
 
-        .footer-inner {
-          align-items: flex-start;
-          flex-direction: column;
+        .summary-item {
+          min-height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .summary-item:last-child {
+          border-bottom: 0;
+        }
+
+        .section,
+        .hero {
+          padding: 22px;
+        }
+
+        .qr {
+          max-width: 260px;
+          margin: 0 auto;
+        }
+
+        .brand {
+          font-size: 12px;
+          letter-spacing: 0.06em;
+        }
+
+        .topbar .button {
+          display: none;
         }
       }
     </style>
   </head>
   <body>
-    <header class="nav">
-      <div class="nav-inner">
-        <a class="brand" href="#top" aria-label="Laboratorio Logoped-IA">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span>Laboratorio Logoped-IA</span>
-        </a>
-        <nav class="nav-links" aria-label="Principal">
-          <a href="#manifiesto">Manifiesto</a>
-          <a href="#soluciones">Soluciones</a>
-          <a href="#metodo">Método</a>
-          <a href="#direccion">Dirección</a>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#inicio">Laboratorio Logoped-IA</a>
+        <nav class="nav" aria-label="Secciones principales">
+          <a href="#propuesta">Propuesta</a>
+          <a href="#implantacion">Implantación</a>
+          <a href="#criterio">Criterio</a>
+          <a href="#contacto">Contacto</a>
         </nav>
-        <a class="button button-primary" href="https://t.me/logoped_ia">Solicitar reunión</a>
+        <a class="button" href="https://t.me/logoped_ia">Solicitar reunión</a>
       </div>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Innovación educativa con criterio clínico y pedagógico</p>
-            <h1>
-              La educación no necesita más herramientas.
-              <span class="muted-title">Necesita recuperar tiempo.</span>
-            </h1>
-            <p class="hero-copy">
-              Laboratorio Logoped-IA ayuda a implantar tecnología con sentido para reducir
-              burocracia, mejorar procesos y dedicar más tiempo al alumnado.
+    <main id="inicio" class="shell">
+      <div class="layout">
+        <div>
+          <section class="panel hero" aria-labelledby="titulo">
+            <p class="eyebrow">Propuesta para administraciones y centros educativos</p>
+            <h1 id="titulo">IA útil para recuperar tiempo educativo.</h1>
+            <p class="subhead">
+              Laboratorio Logoped-IA ayuda a reducir burocracia, ordenar procesos e implantar
+              tecnología con criterio pedagógico, clínico y organizativo.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="https://t.me/logoped_ia">Solicitar reunión</a>
-              <a class="button button-secondary" href="#manifiesto">Conocer el proyecto</a>
+              <a class="button brand-action" href="#propuesta">Leer propuesta</a>
+              <a class="button secondary" href="#video-manifiesto">Ver vídeo manifiesto</a>
+            </div>
+          </section>
+
+          <div class="panel summary-grid" aria-label="Resumen ejecutivo">
+            <div class="summary-item">
+              <span class="label">No es</span>
+              <strong>Una app más, un curso de IA ni una promesa de automatización mágica.</strong>
+            </div>
+            <div class="summary-item">
+              <span class="label">Es</span>
+              <strong>Una infraestructura de criterio, formación, auditoría e implantación.</strong>
+            </div>
+            <div class="summary-item">
+              <span class="label">Para</span>
+              <strong>Ministerio, consejerías, UPE, equipos directivos, orientación y centros.</strong>
             </div>
           </div>
-          <div class="orbit" aria-hidden="true">
-            <span class="ring one"></span>
-            <span class="ring two"></span>
-            <span class="line"></span>
-            <span class="node a"></span>
-            <span class="node b"></span>
+
+          <div class="sections">
+            <section id="propuesta" class="panel section">
+              <div class="two-col">
+                <div>
+                  <p class="eyebrow">La tesis</p>
+                  <h2>La innovación no se mide por cuántas herramientas se usan.</h2>
+                </div>
+                <div>
+                  <p class="lead">
+                    Se mide por cuánto tiempo profesional recupera un centro y por si ese
+                    tiempo vuelve al alumnado.
+                  </p>
+                  <p class="text">
+                    Laboratorio Logoped-IA nace desde la práctica diaria con docentes,
+                    orientadores, logopedas y familias. Su función no es vender software:
+                    es ayudar a decidir qué tecnología tiene sentido, cómo se implanta y
+                    qué resultados debe producir.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section id="implantacion" class="panel section">
+              <p class="eyebrow">Qué resuelve</p>
+              <h2>Problemas concretos, no discurso tecnológico.</h2>
+              <div class="matrix">
+                <article class="cell">
+                  <h3>Burocracia docente</h3>
+                  <p>Programaciones, adaptaciones, actas, comunicaciones y borradores internos.</p>
+                </article>
+                <article class="cell">
+                  <h3>Orientación y diversidad</h3>
+                  <p>Informes, protocolos, seguimiento, coordinación y documentación NEAE.</p>
+                </article>
+                <article class="cell">
+                  <h3>Recursos personalizados</h3>
+                  <p>Materiales de lenguaje, lectura, comunicación, dislexia, TEA y logopedia.</p>
+                </article>
+                <article class="cell">
+                  <h3>Gobernanza de IA</h3>
+                  <p>Criterios de uso, límites, seguridad, formación y medición de impacto.</p>
+                </article>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <p class="eyebrow">Método de trabajo</p>
+              <h2>Ocho pasos. Sin humo. Con implantación.</h2>
+              <div class="method" aria-label="Método de implantación">
+                <div class="step"><strong>Escuchar</strong></div>
+                <div class="step"><strong>Analizar</strong></div>
+                <div class="step"><strong>Auditar</strong></div>
+                <div class="step"><strong>Diseñar plan</strong></div>
+                <div class="step"><strong>Implementar</strong></div>
+                <div class="step"><strong>Formar</strong></div>
+                <div class="step"><strong>Acompañar</strong></div>
+                <div class="step"><strong>Medir</strong></div>
+              </div>
+            </section>
+
+            <section id="criterio" class="panel section">
+              <div class="two-col">
+                <div>
+                  <p class="eyebrow">Criterio profesional</p>
+                  <h2>Dirigido por José Aserraf.</h2>
+                </div>
+                <div>
+                  <ul class="list">
+                    <li>Logopeda, docente, formador y director de Fönia.</li>
+                    <li>Especialista en inteligencia artificial aplicada a educación y logopedia.</li>
+                    <li>Experiencia diaria con alumnado, pacientes, docentes y equipos de orientación.</li>
+                    <li>Foco en tiempo recuperado, calidad de intervención y atención a la diversidad.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <p class="eyebrow">Preguntas que una administración haría</p>
+              <details open>
+                <summary>¿Sustituye a docentes, orientadores o logopedas?</summary>
+                <p>No. La IA no debe reemplazar criterio profesional. Debe reducir carga mecánica para que el profesional pueda intervenir mejor.</p>
+              </details>
+              <details>
+                <summary>¿Es desarrollo de software propio?</summary>
+                <p>No necesariamente. La programación puede hacerse con colaboradores externos o herramientas existentes. El valor está en diagnóstico, diseño, implantación, formación y medición.</p>
+              </details>
+              <details>
+                <summary>¿Qué resultado se busca?</summary>
+                <p>Menos tareas repetitivas, mejores procesos, más autonomía del equipo y más tiempo útil para el alumnado.</p>
+              </details>
+            </section>
           </div>
         </div>
-      </section>
 
-      <section id="manifiesto">
-        <div class="container manifest">
-          <div>
-            <p class="eyebrow">Manifiesto</p>
-            <h2>Innovar no consiste en usar inteligencia artificial.</h2>
-          </div>
-          <div>
-            <p class="large">
-              Consiste en liberar tiempo para enseñar. En que un docente vuelva antes a casa.
-              En que un orientador pueda dedicar más minutos al alumnado.
-            </p>
-            <div class="body">
-              <p>
-                Laboratorio Logoped-IA no nace como una empresa de desarrollo de software. Nace
-                como un ecosistema de innovación dirigido por José Aserraf, logopeda, docente
-                y formador en inteligencia artificial aplicada.
-              </p>
-              <p>
-                El valor diferencial está en la visión estratégica, el conocimiento clínico,
-                la implantación, la auditoría, la formación y el acompañamiento.
-              </p>
+        <aside class="side" aria-label="Acciones y manifiesto">
+          <section id="video-manifiesto" class="panel side-card">
+            <span class="status">Manifiesto</span>
+            <h2>Vídeo manifiesto</h2>
+            <p>Espacio preparado para enlazar el vídeo. De momento queda visible el QR que has pasado.</p>
+            <div class="qr">
+              <img src="assets/video-manifiesto-qr.jpg" alt="QR de Logoped-IA para acceder al vídeo manifiesto" />
             </div>
-          </div>
-        </div>
-      </section>
+            <!-- MANIFEST_VIDEO_URL: pendiente de recibir -->
+          </section>
 
-      <section id="soluciones" class="section-soft">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Qué hacemos</p>
-            <h2>No vendemos herramientas. Diseñamos soluciones que un equipo puede sostener.</h2>
-            <p>
-              Formación, auditoría, automatización e implantación orientadas a administraciones,
-              centros, orientación, equipos directivos y docentes.
-            </p>
-          </div>
-          <div class="cards">
-            <article class="card"><div class="mark"></div><h3>Formación especializada</h3><p>Programas para equipos docentes con aplicación real en aula, centro y gabinete.</p></article>
-            <article class="card"><div class="mark"></div><h3>Mentorías</h3><p>Acompañamiento estratégico para decidir con criterio antes de implantar tecnología.</p></article>
-            <article class="card"><div class="mark"></div><h3>Auditorías tecnológicas</h3><p>Revisión de procesos, herramientas, riesgos y oportunidades para decidir con evidencia.</p></article>
-            <article class="card"><div class="mark"></div><h3>Automatización</h3><p>Reducción de tareas repetitivas en informes, programaciones y documentación interna.</p></article>
-            <article class="card"><div class="mark"></div><h3>Recursos educativos</h3><p>Materiales adaptados, accesibles y útiles para intervención, lenguaje y diversidad.</p></article>
-            <article class="card"><div class="mark"></div><h3>Asistentes inteligentes</h3><p>Implantación de asistentes internos con usos delimitados y supervisión profesional.</p></article>
-            <article class="card"><div class="mark"></div><h3>Transformación digital</h3><p>Planes sostenibles para centros, administraciones y formación del profesorado.</p></article>
-            <article class="card"><div class="mark"></div><h3>Investigación aplicada</h3><p>Proyectos piloto, medición de impacto y transferencia práctica.</p></article>
-          </div>
-        </div>
-      </section>
+          <section id="contacto" class="panel side-card">
+            <span class="status">Contacto directo</span>
+            <h2>Reunión institucional</h2>
+            <p>Para presentar el proyecto, revisar necesidades o plantear una implantación piloto.</p>
+            <a class="button brand-action" href="https://t.me/logoped_ia">Telegram: logoped_ia</a>
+          </section>
 
-      <section id="metodo">
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Cómo trabajamos</p>
-            <h2>Un método de implantación pensado para instituciones, no para demos.</h2>
-          </div>
-          <div class="timeline">
-            <article class="step"><h3>Escuchamos.</h3></article>
-            <article class="step"><h3>Analizamos.</h3></article>
-            <article class="step"><h3>Auditamos.</h3></article>
-            <article class="step"><h3>Diseñamos un plan.</h3></article>
-            <article class="step"><h3>Implementamos.</h3></article>
-            <article class="step"><h3>Formamos.</h3></article>
-            <article class="step"><h3>Acompañamos.</h3></article>
-            <article class="step"><h3>Medimos resultados.</h3></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-dark">
-        <div class="container split">
-          <div>
-            <p class="eyebrow">Áreas de experiencia</p>
-            <h2>Donde se cruzan educación, clínica y automatización.</h2>
-          </div>
-          <div class="chips" aria-label="Áreas">
-            <span class="chip">Educación</span><span class="chip">Logopedia</span><span class="chip">Pedagogía</span>
-            <span class="chip">Atención Temprana</span><span class="chip">NEAE</span><span class="chip">Dislexia</span>
-            <span class="chip">TEA</span><span class="chip">Lenguaje</span><span class="chip">Comunicación</span>
-            <span class="chip">Lectoescritura</span><span class="chip">Automatización</span><span class="chip">IA aplicada</span>
-            <span class="chip">Videojuegos educativos</span><span class="chip">Evaluación</span>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Casos de uso</p>
-            <h2>La tecnología importa cuando cambia una jornada real.</h2>
-          </div>
-          <div class="cards">
-            <article class="card"><div class="mark"></div><h3>Docencia</h3><p>Un docente crea una adaptación curricular en minutos y conserva criterio pedagógico.</p></article>
-            <article class="card"><div class="mark"></div><h3>Orientación</h3><p>Un orientador automatiza borradores de informes y dedica más tiempo a entrevistar.</p></article>
-            <article class="card"><div class="mark"></div><h3>Logopedia</h3><p>Un logopeda genera materiales personalizados sin convertir la sesión en administración.</p></article>
-            <article class="card"><div class="mark"></div><h3>Centro educativo</h3><p>Un equipo implanta asistentes internos para ordenar protocolos y consultas recurrentes.</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section id="direccion" class="section-soft">
-        <div class="container split">
-          <div class="profile-card">
-            <p class="eyebrow">Dirección</p>
-            <h2>José Aserraf</h2>
-            <div class="credentials">
-              <span>Logopeda</span><span>Director de Fönia</span><span>Formador</span>
-              <span>Ponente</span><span>Especialista en IA aplicada</span><span>Investigador educativo</span>
-            </div>
-          </div>
-          <div class="lead">
-            <p>
-              Laboratorio Logoped-IA nace desde la práctica diaria con pacientes, docentes
-              y equipos que necesitan tecnología útil, no discursos genéricos sobre inteligencia
-              artificial.
-            </p>
-            <p>
-              No busca vender ego. Busca convertir experiencia acumulada en planes de implantación
-              claros, medibles y útiles para centros y administraciones.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <div class="no-humo">
-          <p class="eyebrow">No vendemos humo</p>
-          <div class="no-humo-grid">
-            <h2>No creemos que la inteligencia artificial sustituya al docente.</h2>
-            <div>
-              <p>Creemos que puede devolverle tiempo.</p>
-              <p>No buscamos reemplazar profesionales. Buscamos multiplicar su impacto.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="final">
-        <div class="container">
-          <p class="eyebrow">Propuesta estratégica</p>
-          <h2>El futuro no llega solo. <span class="muted-title">Se diseña.</span></h2>
-          <a class="button button-primary" href="https://t.me/logoped_ia">Solicitar una reunión institucional</a>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="container footer-inner">
-        <div>
-          <strong>Laboratorio Logoped-IA</strong>
-          <p style="margin: 8px 0 0; color: var(--muted)">Infraestructura para transformar la educación con criterio.</p>
-        </div>
-        <a class="telegram" href="https://t.me/logoped_ia">Telegram: https://t.me/logoped_ia</a>
+          <section class="panel side-card">
+            <span class="status">Principio</span>
+            <p class="quote">No más herramientas. Más tiempo para enseñar, orientar e intervenir.</p>
+          </section>
+        </aside>
       </div>
-    </footer>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <strong>Laboratorio Logoped-IA</strong>
+          <span>No es una herramienta. Es infraestructura para transformar la educación.</span>
+        </div>
+      </footer>
+    </main>
   </body>
 </html>
