@@ -275,6 +275,46 @@
         display: block;
       }
 
+      .video-frame {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: 6px;
+        border: 1px solid var(--line);
+        background: #050805;
+      }
+
+      .video-frame iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 0;
+      }
+
+      .mini-qr {
+        display: grid;
+        grid-template-columns: 64px 1fr;
+        gap: 12px;
+        align-items: center;
+        margin-top: 14px;
+        border-top: 1px solid var(--line);
+        padding-top: 14px;
+      }
+
+      .mini-qr img {
+        width: 64px;
+        height: 64px;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+
+      .note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
       .status {
         display: inline-flex;
         align-items: center;
@@ -366,6 +406,10 @@
         background: var(--line);
       }
 
+      .matrix.three {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
       .cell {
         min-height: 145px;
         padding: 18px;
@@ -436,6 +480,27 @@
         line-height: 1.65;
       }
 
+      .link-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .link-list a {
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 11px 12px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 760;
+        text-decoration: none;
+      }
+
+      .link-list a:hover {
+        border-color: var(--brand);
+      }
+
       .quote {
         border-left: 4px solid var(--brand);
         padding-left: 18px;
@@ -483,6 +548,7 @@
 
         .summary-grid,
         .matrix,
+        .matrix.three,
         .side {
           grid-template-columns: 1fr;
         }
@@ -529,6 +595,7 @@
         <nav class="nav" aria-label="Secciones principales">
           <a href="#propuesta">Propuesta</a>
           <a href="#implantacion">Implantación</a>
+          <a href="#melilla">Melilla</a>
           <a href="#criterio">Criterio</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -543,8 +610,8 @@
             <p class="eyebrow">Propuesta para administraciones y centros educativos</p>
             <h1 id="titulo">IA útil para recuperar tiempo educativo.</h1>
             <p class="subhead">
-              Laboratorio Logoped-IA ayuda a reducir burocracia, ordenar procesos e implantar
-              tecnología con criterio pedagógico, clínico y organizativo.
+              Desde Melilla, Laboratorio Logoped-IA ayuda a reducir burocracia, ordenar procesos
+              e implantar tecnología con criterio pedagógico, clínico y organizativo.
             </p>
             <div class="hero-actions">
               <a class="button brand-action" href="#propuesta">Leer propuesta</a>
@@ -563,7 +630,7 @@
             </div>
             <div class="summary-item">
               <span class="label">Para</span>
-              <strong>Ministerio, consejerías, UPE, equipos directivos, orientación y centros.</strong>
+              <strong>UPE Melilla, Ministerio, consejerías, equipos directivos, orientación y centros.</strong>
             </div>
           </div>
 
@@ -608,6 +675,42 @@
                 <article class="cell">
                   <h3>Gobernanza de IA</h3>
                   <p>Criterios de uso, límites, seguridad, formación y medición de impacto.</p>
+                </article>
+              </div>
+            </section>
+
+            <section id="melilla" class="panel section">
+              <p class="eyebrow">Oferta desde Melilla</p>
+              <h2>Un laboratorio local para pilotar IA educativa con evidencias.</h2>
+              <p class="lead">
+                La oportunidad no es importar una plataforma cerrada. Es crear una capacidad
+                propia: formación, acompañamiento, materiales, asistentes y ciclos de mejora
+                conectados con la realidad de Melilla.
+              </p>
+              <div class="matrix three">
+                <article class="cell">
+                  <h3>Coaching docente asistido</h3>
+                  <p>Conversaciones breves de mejora, objetivos semanales y seguimiento sin convertirlo en vigilancia.</p>
+                </article>
+                <article class="cell">
+                  <h3>Vídeo y audio formativo</h3>
+                  <p>Cápsulas, avatares, podcasts, demostraciones y recursos multimedia para formación del profesorado.</p>
+                </article>
+                <article class="cell">
+                  <h3>Evidencias de práctica</h3>
+                  <p>Registro de acciones, materiales creados, procesos reducidos y mejoras observables.</p>
+                </article>
+                <article class="cell">
+                  <h3>Asistentes internos</h3>
+                  <p>Bases de conocimiento para dudas docentes, orientación, familias, protocolos y recursos.</p>
+                </article>
+                <article class="cell">
+                  <h3>Materiales adaptados</h3>
+                  <p>Lecturas graduadas, fichas, pictogramas, rúbricas, intervención en lenguaje y NEAE.</p>
+                </article>
+                <article class="cell">
+                  <h3>Proyectos piloto</h3>
+                  <p>Implantaciones pequeñas, medibles y transferibles antes de escalar a todo el sistema.</p>
                 </article>
               </div>
             </section>
@@ -658,6 +761,14 @@
                 <summary>¿Qué resultado se busca?</summary>
                 <p>Menos tareas repetitivas, mejores procesos, más autonomía del equipo y más tiempo útil para el alumnado.</p>
               </details>
+              <details>
+                <summary>¿Qué relación tiene con la propuesta de formación anterior?</summary>
+                <p>La formación de IA para docentes fue una primera aproximación. Esta propuesta la amplía: pasa de curso puntual a laboratorio de implantación, acompañamiento y medición.</p>
+              </details>
+              <div class="link-list" aria-label="Referencias del proyecto">
+                <a href="https://formacionmecmelilla.netlify.app" target="_blank" rel="noreferrer">Ver primera aproximación de formación MEC Melilla</a>
+                <a href="https://www.aristotal.ai/video" target="_blank" rel="noreferrer">Referencia internacional: coaching docente con IA</a>
+              </div>
             </section>
           </div>
         </div>
@@ -666,11 +777,28 @@
           <section id="video-manifiesto" class="panel side-card">
             <span class="status">Manifiesto</span>
             <h2>Vídeo manifiesto</h2>
-            <p>Espacio preparado para enlazar el vídeo. De momento queda visible el QR que has pasado.</p>
-            <div class="qr">
-              <img src="assets/video-manifiesto-qr.jpg" alt="QR de Logoped-IA para acceder al vídeo manifiesto" />
+            <p>La visión del proyecto en formato breve: IA al servicio de la logopedia y de la educación.</p>
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/kgEPq9zP7vc"
+                title="Manifiesto Logoped-IA"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
             </div>
-            <!-- MANIFEST_VIDEO_URL: pendiente de recibir -->
+            <div class="mini-qr">
+              <img src="assets/video-manifiesto-qr.jpg" alt="QR de Logoped-IA" />
+              <p class="note">
+                <a href="https://youtu.be/kgEPq9zP7vc?is=Sa6BnZG_fB2yEzmQ" target="_blank" rel="noreferrer">Abrir manifiesto en YouTube</a>
+              </p>
+            </div>
+          </section>
+
+          <section class="panel side-card">
+            <span class="status">Desde Melilla</span>
+            <h2>Piloto transferible</h2>
+            <p>Un proyecto pequeño puede convertirse en metodología exportable: formación, asistentes, recursos y evidencias.</p>
           </section>
 
           <section id="contacto" class="panel side-card">
