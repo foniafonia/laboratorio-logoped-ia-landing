@@ -140,6 +140,12 @@
         color: white;
       }
 
+      .button.call {
+        border-color: #0f6b5f;
+        background: #0f6b5f;
+        color: white;
+      }
+
       main {
         padding: 42px 0 60px;
       }
@@ -591,6 +597,279 @@
         border-color: var(--brand);
       }
 
+      .timeline-axis {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .timeline-axis::before {
+        content: "";
+        position: absolute;
+        left: 4%;
+        right: 4%;
+        top: 24px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(16, 169, 143, 0), rgba(16, 169, 143, 0.82), rgba(16, 169, 143, 0));
+      }
+
+      .axis-point {
+        position: relative;
+        z-index: 1;
+        min-height: 158px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .axis-point::before {
+        content: "";
+        display: block;
+        width: 14px;
+        height: 14px;
+        margin-bottom: 22px;
+        border-radius: 999px;
+        background: var(--brand);
+        box-shadow: 0 0 0 7px rgba(16, 169, 143, 0.12);
+      }
+
+      .axis-point strong {
+        display: block;
+        color: var(--ink);
+        line-height: 1.25;
+      }
+
+      .axis-point span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .heatmap {
+        display: grid;
+        grid-template-columns: 1.1fr repeat(4, 1fr);
+        overflow: hidden;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--line);
+        gap: 1px;
+      }
+
+      .heat-cell {
+        min-height: 54px;
+        padding: 12px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 13px;
+        line-height: 1.25;
+      }
+
+      .heat-head {
+        color: var(--muted);
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 11px;
+      }
+
+      .heat-1 {
+        background: #f3fbf8;
+      }
+
+      .heat-2 {
+        background: #dff7f1;
+      }
+
+      .heat-3 {
+        background: #b8eee3;
+      }
+
+      .heat-4 {
+        background: #74ddcd;
+        color: #062a25;
+        font-weight: 800;
+      }
+
+      .volume-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .volume {
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 15px;
+        background: #fff;
+      }
+
+      .volume strong {
+        display: block;
+        color: var(--ink);
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .volume span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .bar {
+        position: relative;
+        height: 7px;
+        overflow: hidden;
+        margin-top: 14px;
+        border-radius: 999px;
+        background: #edf2f2;
+      }
+
+      .bar i {
+        display: block;
+        width: var(--w);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--brand), #45d9ce);
+      }
+
+      .training-shell {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 18px;
+      }
+
+      .module-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .module {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+        align-items: start;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 13px;
+        background: #fff;
+      }
+
+      .module b {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 6px;
+        background: var(--ink);
+        color: #fff;
+        font-size: 13px;
+      }
+
+      .module strong {
+        display: block;
+        color: var(--ink);
+      }
+
+      .module span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .evidence-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        overflow: hidden;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--line);
+      }
+
+      .evidence {
+        min-height: 148px;
+        padding: 17px;
+        background: #fff;
+      }
+
+      .evidence strong {
+        display: block;
+        color: var(--ink);
+      }
+
+      .evidence p {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .game-showcase {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(130px, 1fr));
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .game-card {
+        position: relative;
+        min-height: 188px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #071311;
+        color: white;
+      }
+
+      .game-card img {
+        width: 100%;
+        height: 100%;
+        min-height: 188px;
+        display: block;
+        object-fit: cover;
+        opacity: 0.76;
+        transform: scale(1.02);
+        transition: transform 420ms ease, opacity 420ms ease;
+      }
+
+      .game-card:hover img {
+        opacity: 0.93;
+        transform: scale(1.07);
+      }
+
+      .game-card div {
+        position: absolute;
+        inset: auto 0 0;
+        padding: 48px 12px 12px;
+        background: linear-gradient(180deg, rgba(7, 19, 17, 0), rgba(7, 19, 17, 0.92));
+      }
+
+      .game-card strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .game-card span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 12px;
+      }
+
       .quote {
         border-left: 4px solid var(--brand);
         padding-left: 18px;
@@ -617,7 +896,8 @@
 
       @media (max-width: 940px) {
         .layout,
-        .two-col {
+        .two-col,
+        .training-shell {
           grid-template-columns: 1fr;
         }
 
@@ -639,8 +919,40 @@
         .summary-grid,
         .matrix,
         .matrix.three,
-        .side {
+        .side,
+        .evidence-grid {
           grid-template-columns: 1fr;
+        }
+
+        .timeline-axis,
+        .volume-grid,
+        .game-showcase {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .heatmap {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .timeline-axis::before {
+          display: none;
+        }
+
+        .game-card,
+        .game-card img {
+          min-height: 150px;
+        }
+
+        .game-card div {
+          padding: 36px 10px 10px;
+        }
+
+        .game-card strong {
+          font-size: 12px;
+        }
+
+        .game-card span {
+          font-size: 11px;
         }
 
         .method {
@@ -659,7 +971,25 @@
 
         .section,
         .hero {
-          padding: 22px;
+          padding: 20px;
+        }
+
+        .module {
+          grid-template-columns: 34px 1fr;
+          gap: 10px;
+          padding: 10px;
+        }
+
+        .module b {
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+
+        .heat-cell {
+          min-height: 42px;
+          padding: 10px;
+          font-size: 12px;
         }
 
         .signal-map {
@@ -705,10 +1035,12 @@
           <a href="#propuesta">Propuesta</a>
           <a href="#implantacion">Implantación</a>
           <a href="#melilla">Melilla</a>
+          <a href="#formacion">Formación</a>
+          <a href="#proyectos">Proyectos</a>
           <a href="#criterio">Criterio</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a class="button" href="https://t.me/logoped_ia">Solicitar reunión</a>
+        <a class="button call" href="tel:+34667712699">667 712 699</a>
       </div>
     </header>
 
@@ -736,6 +1068,7 @@
               <div class="hero-actions">
                 <a class="button brand-action" href="#propuesta">Leer propuesta</a>
                 <a class="button secondary" href="#video-manifiesto">Ver vídeo manifiesto</a>
+                <a class="button call" href="tel:+34667712699">Llamar: 667 712 699</a>
               </div>
               <p class="hero-note">
                 La tecnología no debe añadir otra carga. Debe quitar peso.
@@ -849,9 +1182,116 @@
               </div>
             </section>
 
+            <section id="formacion" class="panel section">
+              <p class="eyebrow">Subpropuesta 01 · Formación aplicada</p>
+              <h2>Formación oficializable, práctica y conectada con implantación.</h2>
+              <div class="training-shell">
+                <div>
+                  <p class="lead">
+                    No se plantea como un curso aislado. La formación es la puerta de entrada:
+                    instala criterio común, crea materiales reales y prepara a los equipos para
+                    trabajar con IA sin depender de entusiasmo individual.
+                  </p>
+                  <div class="volume-grid">
+                    <div class="volume">
+                      <strong>PT/AL</strong>
+                      <span>Perfil inicial prioritario</span>
+                      <div class="bar"><i style="--w: 88%"></i></div>
+                    </div>
+                    <div class="volume">
+                      <strong>30 h</strong>
+                      <span>Formato modular adaptable</span>
+                      <div class="bar"><i style="--w: 72%"></i></div>
+                    </div>
+                    <div class="volume">
+                      <strong>5</strong>
+                      <span>Módulos operativos</span>
+                      <div class="bar"><i style="--w: 64%"></i></div>
+                    </div>
+                    <div class="volume">
+                      <strong>1 piloto</strong>
+                      <span>Entrega evaluable por centro</span>
+                      <div class="bar"><i style="--w: 80%"></i></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="module-list">
+                  <div class="module"><b>01</b><div><strong>Fundamentos y límites de IA educativa</strong><span>Uso seguro, criterio profesional, protección del alumnado y decisión humana.</span></div></div>
+                  <div class="module"><b>02</b><div><strong>Materiales adaptados en minutos</strong><span>Fichas, lecturas graduadas, pictogramas, rúbricas y tareas multinivel.</span></div></div>
+                  <div class="module"><b>03</b><div><strong>Videojuegos y experiencias interactivas</strong><span>Juegos sin programar, actividades con QR, narrativa y refuerzo motivacional.</span></div></div>
+                  <div class="module"><b>04</b><div><strong>Contenido multimedia y vídeo</strong><span>Cápsulas, avatares, audio, demostraciones y recursos para formación docente.</span></div></div>
+                  <div class="module"><b>05</b><div><strong>Automatización y gestión</strong><span>Informes, ACI, comunicación con familias, actas y documentación repetitiva.</span></div></div>
+                </div>
+              </div>
+              <div class="heatmap" aria-label="Mapa de calor de prioridades formativas">
+                <div class="heat-cell heat-head">Área</div>
+                <div class="heat-cell heat-head">Impacto</div>
+                <div class="heat-cell heat-head">Rapidez</div>
+                <div class="heat-cell heat-head">Escalado</div>
+                <div class="heat-cell heat-head">Riesgo</div>
+                <div class="heat-cell">Materiales adaptados</div><div class="heat-cell heat-4">Alto</div><div class="heat-cell heat-4">Alto</div><div class="heat-cell heat-3">Medio-alto</div><div class="heat-cell heat-2">Controlable</div>
+                <div class="heat-cell">Automatización documental</div><div class="heat-cell heat-4">Alto</div><div class="heat-cell heat-3">Medio</div><div class="heat-cell heat-4">Alto</div><div class="heat-cell heat-3">Requiere protocolo</div>
+                <div class="heat-cell">Videojuegos educativos</div><div class="heat-cell heat-3">Medio-alto</div><div class="heat-cell heat-2">Medio</div><div class="heat-cell heat-3">Medio-alto</div><div class="heat-cell heat-1">Bajo</div>
+              </div>
+            </section>
+
+            <section id="proyectos" class="panel section">
+              <p class="eyebrow">Subpropuesta 02 · Proyectos y recursos propios</p>
+              <h2>JuegosLogopedos como demostrador de capacidad aplicada.</h2>
+              <p class="lead">
+                La propuesta no parte de cero: ya existe experiencia creando juegos, asistentes,
+                recursos interactivos y prototipos para lenguaje, lectura, discriminación auditiva
+                y práctica clínica.
+              </p>
+              <div class="game-showcase" aria-label="Muestra de proyectos de JuegosLogopedos">
+                <a class="game-card" href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">
+                  <img src="assets/games/auditory-run-pro.jpg" alt="Auditory Run Pro" />
+                  <div><strong>Auditory Run Pro</strong><span>Discriminación auditiva</span></div>
+                </a>
+                <a class="game-card" href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">
+                  <img src="assets/games/silaba-luxor-pro.jpg" alt="Sílaba Luxor Pro" />
+                  <div><strong>Sílaba Luxor Pro</strong><span>Conciencia fonológica</span></div>
+                </a>
+                <a class="game-card" href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">
+                  <img src="assets/games/ninja-phonetics-pro.jpg" alt="Ninja Phonetics Pro" />
+                  <div><strong>Ninja Phonetics</strong><span>Fonética y atención</span></div>
+                </a>
+                <a class="game-card" href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">
+                  <img src="assets/games/snake-3d-palabras.jpg" alt="Snake 3D Palabras" />
+                  <div><strong>Snake 3D Palabras</strong><span>Vocabulario y lectura</span></div>
+                </a>
+                <a class="game-card" href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">
+                  <img src="assets/games/karaoke-tartamudez.jpg" alt="Karaoke Tartamudez" />
+                  <div><strong>Karaoke Tartamudez</strong><span>Lectura y fluidez</span></div>
+                </a>
+              </div>
+              <div class="link-list" aria-label="Enlace a JuegosLogopedos">
+                <a href="https://juegoslogopedos.com" target="_blank" rel="noreferrer">Ver JuegosLogopedos.com</a>
+              </div>
+            </section>
+
+            <section class="panel section">
+              <p class="eyebrow">Evidencia y medición</p>
+              <h2>La propuesta debe poder defenderse técnicamente.</h2>
+              <div class="evidence-grid">
+                <article class="evidence"><strong>Práctica deliberada</strong><p>Actividades con objetivo claro, repetición útil, dificultad graduada y feedback inmediato.</p></article>
+                <article class="evidence"><strong>Diseño Universal para el Aprendizaje</strong><p>Múltiples formas de acceso: texto, audio, imagen, juego, apoyo visual y adaptación por nivel.</p></article>
+                <article class="evidence"><strong>Feedback formativo</strong><p>El valor está en mejorar la práctica, no en fiscalizar al docente ni producir métricas vacías.</p></article>
+                <article class="evidence"><strong>Aprendizaje multimodal</strong><p>Vídeo, audio, interacción y materiales impresos se combinan cuando aportan comprensión.</p></article>
+                <article class="evidence"><strong>Transferencia al aula</strong><p>Cada módulo termina con un producto utilizable y revisable en contexto real.</p></article>
+                <article class="evidence"><strong>Indicadores prudentes</strong><p>Tiempo ahorrado, uso real, calidad percibida, reutilización y mejora de procesos.</p></article>
+              </div>
+            </section>
+
             <section class="panel section">
               <p class="eyebrow">Método de trabajo</p>
               <h2>Ocho pasos. Sin humo. Con implantación.</h2>
+              <div class="timeline-axis" aria-label="Eje temporal de implantación">
+                <div class="axis-point"><strong>0-2 semanas</strong><span>Diagnóstico, escucha y selección del piloto.</span></div>
+                <div class="axis-point"><strong>3-6 semanas</strong><span>Formación aplicada y primeros recursos.</span></div>
+                <div class="axis-point"><strong>7-10 semanas</strong><span>Asistentes, juegos, automatizaciones y acompañamiento.</span></div>
+                <div class="axis-point"><strong>11-12 semanas</strong><span>Medición, informe y propuesta de escalado.</span></div>
+              </div>
               <div class="method" aria-label="Método de implantación">
                 <div class="step"><strong>Escuchar</strong></div>
                 <div class="step"><strong>Analizar</strong></div>
@@ -896,11 +1336,10 @@
                 <p>Menos tareas repetitivas, mejores procesos, más autonomía del equipo y más tiempo útil para el alumnado.</p>
               </details>
               <details>
-                <summary>¿Qué relación tiene con la propuesta de formación anterior?</summary>
-                <p>La formación de IA para docentes fue una primera aproximación. Esta propuesta la amplía: pasa de curso puntual a laboratorio de implantación, acompañamiento y medición.</p>
+                <summary>¿La formación es una línea separada?</summary>
+                <p>No. Es una subpropuesta dentro del laboratorio: sirve para instalar criterio común, producir recursos reales y preparar la implantación.</p>
               </details>
               <div class="link-list" aria-label="Referencias del proyecto">
-                <a href="https://formacionmecmelilla.netlify.app" target="_blank" rel="noreferrer">Ver primera aproximación de formación MEC Melilla</a>
                 <a href="https://www.aristotal.ai/video" target="_blank" rel="noreferrer">Referencia internacional: coaching docente con IA</a>
               </div>
             </section>
@@ -938,8 +1377,12 @@
           <section id="contacto" class="panel side-card">
             <span class="status">Contacto directo</span>
             <h2>Reunión institucional</h2>
-            <p>Para presentar el proyecto, revisar necesidades o plantear una implantación piloto.</p>
-            <a class="button brand-action" href="https://t.me/logoped_ia">Telegram: logoped_ia</a>
+            <p>Para presentar el proyecto, revisar necesidades o plantear una implantación piloto. El mejor contacto es el teléfono.</p>
+            <a class="button call" href="tel:+34667712699">Llamar al 667 712 699</a>
+            <div class="link-list" aria-label="Canales secundarios">
+              <a href="https://wa.me/34667712699" target="_blank" rel="noreferrer">Abrir WhatsApp</a>
+              <a href="https://t.me/logoped_ia" target="_blank" rel="noreferrer">Telegram: comunidad Logoped-IA</a>
+            </div>
           </section>
 
           <section class="panel side-card">
@@ -952,7 +1395,7 @@
       <footer class="footer">
         <div class="footer-inner">
           <strong>Laboratorio Logoped-IA</strong>
-          <span>No es una herramienta. Es infraestructura para transformar la educación.</span>
+          <span>Contacto institucional: <a href="tel:+34667712699">667 712 699</a> · Comunidad: <a href="https://t.me/logoped_ia">Telegram</a></span>
         </div>
       </footer>
     </main>
