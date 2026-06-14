@@ -526,19 +526,25 @@
 
       .method {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--line);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 22px;
         counter-reset: step;
       }
 
       .step {
         min-height: 122px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
         padding: 17px;
         background: #fff;
+        transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .step:hover {
+        border-color: rgba(16, 169, 143, 0.55);
+        box-shadow: 0 18px 46px -38px rgba(10, 13, 13, 0.55);
+        transform: translateY(-2px);
       }
 
       .step::before {
@@ -552,7 +558,16 @@
       }
 
       .step strong {
+        display: block;
         color: var(--ink);
+      }
+
+      .step span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
       }
 
       details {
@@ -623,6 +638,13 @@
         border-radius: 7px;
         padding: 16px;
         background: rgba(255, 255, 255, 0.92);
+        transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+      }
+
+      .axis-point:hover {
+        border-color: rgba(16, 169, 143, 0.5);
+        box-shadow: 0 18px 44px -38px rgba(10, 13, 13, 0.48);
+        transform: translateY(-2px);
       }
 
       .axis-point::before {
@@ -1015,6 +1037,23 @@
         }
       }
 
+      @media (max-width: 520px) {
+        .timeline-axis,
+        .method {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .axis-point,
+        .step {
+          min-height: auto;
+        }
+
+        .axis-point::before {
+          margin-bottom: 14px;
+        }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -1023,6 +1062,11 @@
         .signal-line,
         .signal-node {
           animation: none;
+        }
+
+        .step,
+        .axis-point {
+          transition: none;
         }
       }
     </style>
@@ -1040,7 +1084,7 @@
           <a href="#criterio">Criterio</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a class="button call" href="tel:+34667712699">667 712 699</a>
+        <a class="button call" href="https://wa.me/34667712699" target="_blank" rel="noreferrer">Contactar por WhatsApp</a>
       </div>
     </header>
 
@@ -1068,7 +1112,7 @@
               <div class="hero-actions">
                 <a class="button brand-action" href="#propuesta">Leer propuesta</a>
                 <a class="button secondary" href="#video-manifiesto">Ver vídeo manifiesto</a>
-                <a class="button call" href="tel:+34667712699">Llamar: 667 712 699</a>
+                <a class="button call" href="https://wa.me/34667712699" target="_blank" rel="noreferrer">Contactar por WhatsApp</a>
               </div>
               <p class="hero-note">
                 La tecnología no debe añadir otra carga. Debe quitar peso.
@@ -1271,6 +1315,31 @@
             </section>
 
             <section class="panel section">
+              <p class="eyebrow">Subpropuesta 03 · Mejora docente asistida</p>
+              <h2>Un modelo de acompañamiento inspirado en coaching profesional con IA.</h2>
+              <p class="lead">
+                La referencia inglesa encaja si se adapta bien: no como vigilancia del profesorado,
+                sino como sistema de reflexión, feedback y mejora continua para equipos docentes.
+              </p>
+              <div class="timeline-axis" aria-label="Ciclo de mejora docente asistida">
+                <div class="axis-point"><strong>1. Evidencia</strong><span>El docente registra una situación, recurso, audio, vídeo, planificación o necesidad concreta.</span></div>
+                <div class="axis-point"><strong>2. Feedback</strong><span>La IA ayuda a ordenar observaciones, detectar patrones y proponer mejoras revisables.</span></div>
+                <div class="axis-point"><strong>3. Objetivo</strong><span>Se define una acción pequeña para la semana: material, estrategia, adaptación o comunicación.</span></div>
+                <div class="axis-point"><strong>4. Seguimiento</strong><span>El equipo revisa impacto, ajusta y genera evidencia útil para el centro.</span></div>
+              </div>
+              <div class="compact-compare" aria-label="Límites del modelo de acompañamiento">
+                <div class="compare-box">
+                  <span class="label">No es evaluación punitiva</span>
+                  <p>No sirve para fiscalizar docentes ni convertir la práctica educativa en puntuaciones simplistas.</p>
+                </div>
+                <div class="compare-box dark">
+                  <span class="label">Es desarrollo profesional</span>
+                  <p>Sirve para conversar mejor sobre la práctica, documentar avances y sostener mejora real.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel section">
               <p class="eyebrow">Evidencia y medición</p>
               <h2>La propuesta debe poder defenderse técnicamente.</h2>
               <div class="evidence-grid">
@@ -1285,7 +1354,7 @@
 
             <section class="panel section">
               <p class="eyebrow">Método de trabajo</p>
-              <h2>Ocho pasos. Sin humo. Con implantación.</h2>
+              <h2>Ocho pasos. Con criterio, implantación y medición.</h2>
               <div class="timeline-axis" aria-label="Eje temporal de implantación">
                 <div class="axis-point"><strong>0-2 semanas</strong><span>Diagnóstico, escucha y selección del piloto.</span></div>
                 <div class="axis-point"><strong>3-6 semanas</strong><span>Formación aplicada y primeros recursos.</span></div>
@@ -1293,14 +1362,14 @@
                 <div class="axis-point"><strong>11-12 semanas</strong><span>Medición, informe y propuesta de escalado.</span></div>
               </div>
               <div class="method" aria-label="Método de implantación">
-                <div class="step"><strong>Escuchar</strong></div>
-                <div class="step"><strong>Analizar</strong></div>
-                <div class="step"><strong>Auditar</strong></div>
-                <div class="step"><strong>Diseñar plan</strong></div>
-                <div class="step"><strong>Implementar</strong></div>
-                <div class="step"><strong>Formar</strong></div>
-                <div class="step"><strong>Acompañar</strong></div>
-                <div class="step"><strong>Medir</strong></div>
+                <div class="step"><strong>Escuchar</strong><span>Necesidades, perfiles, restricciones y prioridades reales.</span></div>
+                <div class="step"><strong>Analizar</strong><span>Cargas de trabajo, procesos repetidos y puntos de fricción.</span></div>
+                <div class="step"><strong>Auditar</strong><span>Herramientas, riesgos, datos, usos y oportunidades de mejora.</span></div>
+                <div class="step"><strong>Diseñar plan</strong><span>Objetivos, calendario, responsables, límites y entregables.</span></div>
+                <div class="step"><strong>Implementar</strong><span>Recursos, asistentes, automatizaciones y primeros pilotos.</span></div>
+                <div class="step"><strong>Formar</strong><span>Sesiones prácticas con producción real para los equipos.</span></div>
+                <div class="step"><strong>Acompañar</strong><span>Seguimiento, ajustes, resolución de dudas y mejora continua.</span></div>
+                <div class="step"><strong>Medir</strong><span>Tiempo recuperado, uso real, satisfacción y calidad percibida.</span></div>
               </div>
             </section>
 
@@ -1340,7 +1409,7 @@
                 <p>No. Es una subpropuesta dentro del laboratorio: sirve para instalar criterio común, producir recursos reales y preparar la implantación.</p>
               </details>
               <div class="link-list" aria-label="Referencias del proyecto">
-                <a href="https://www.aristotal.ai/video" target="_blank" rel="noreferrer">Referencia internacional: coaching docente con IA</a>
+                <a href="https://www.aristotal.ai/video" target="_blank" rel="noreferrer">Referencia internacional consultada: coaching docente con IA</a>
               </div>
             </section>
           </div>
@@ -1377,10 +1446,9 @@
           <section id="contacto" class="panel side-card">
             <span class="status">Contacto directo</span>
             <h2>Reunión institucional</h2>
-            <p>Para presentar el proyecto, revisar necesidades o plantear una implantación piloto. El mejor contacto es el teléfono.</p>
-            <a class="button call" href="tel:+34667712699">Llamar al 667 712 699</a>
+            <p>Para presentar el proyecto, revisar necesidades o plantear una implantación piloto. El canal prioritario es WhatsApp.</p>
+            <a class="button call" href="https://wa.me/34667712699" target="_blank" rel="noreferrer">Contactar por WhatsApp</a>
             <div class="link-list" aria-label="Canales secundarios">
-              <a href="https://wa.me/34667712699" target="_blank" rel="noreferrer">Abrir WhatsApp</a>
               <a href="https://t.me/logoped_ia" target="_blank" rel="noreferrer">Telegram: comunidad Logoped-IA</a>
             </div>
           </section>
@@ -1395,7 +1463,7 @@
       <footer class="footer">
         <div class="footer-inner">
           <strong>Laboratorio Logoped-IA</strong>
-          <span>Contacto institucional: <a href="tel:+34667712699">667 712 699</a> · Comunidad: <a href="https://t.me/logoped_ia">Telegram</a></span>
+          <span>Contacto institucional: <a href="https://wa.me/34667712699">WhatsApp</a> · Comunidad: <a href="https://t.me/logoped_ia">Telegram</a></span>
         </div>
       </footer>
     </main>
